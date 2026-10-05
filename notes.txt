@@ -1,0 +1,2 @@
+Day 1 - My Cloud and DevOps Journey
+I am learning Linux, Git, Python, Azure and DevOps.
