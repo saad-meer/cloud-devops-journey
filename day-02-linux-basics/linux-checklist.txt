@@ -1,0 +1,6 @@
+I can navigate directories using cd.
+I can inspect files using ls and cat.
+I can identify absolute and relative paths.
+I can list files using ls, ls -l and ls -a.
+I can read files using cat, head and tail.
+I understand the difference between > and >>.

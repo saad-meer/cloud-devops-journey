@@ -1,0 +1,7 @@
+pwd shows my current working directory.
+ls lists files and directories.
+cat displays the contents of a file.
+ls -l shows detailed file information.
+ls -a shows hidden entries.
+head displays the beginning of a file.
+tail displays the end of a file.

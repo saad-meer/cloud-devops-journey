@@ -1,0 +1,7 @@
+Day 2 - Linux Fundamentals
+Today I practised navigating directories and organising my project.
+Today I practised ls -l, ls -a and cat.
+I practised absolute and relative paths, including cd .. and cd ../..
+I learned to list files using ls, ls -l and ls -a.
+I practised reading files using cat, head and tail.
+I learned the difference between > and >> when writing or appending text.
