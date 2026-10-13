@@ -4,3 +4,18 @@ I can identify absolute and relative paths.
 I can list files using ls, ls -l and ls -a.
 I can read files using cat, head and tail.
 I understand the difference between > and >>.
+Day 2 - Linux Practice
+
+1. Used pwd to check my current directory.
+2. Used ls to list files and folders.
+3. Used ls -la to inspect hidden files and detailed file information.
+4. Used find to locate a file by name.
+5. Used ls -l to inspect file permissions.
+6. Used uname -a to inspect system information.
+7. Used whoami to identify the current user.
+8. Used df -h to inspect filesystem disk usage.
+9. Used du -sh . to estimate directory size.
+
+Key learning:
+Linux commands help administrators locate files, inspect permissions,
+and understand system resources.
