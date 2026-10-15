@@ -1,0 +1,89 @@
+
+Day 5 - Linux Processes and System Monitoring
+
+Objective:
+
+Learn how to inspect, monitor, identify and stop processes.
+
+1. The ps command
+
+The ps command displays information about running processes.
+
+Running ps without options shows a limited selection of processes associated with the current terminal session.
+
+2. The ps aux command
+
+The ps aux command provides a broader snapshot of running processes.
+
+Important columns:
+
+- USER: Account running the process.
+
+- PID: Process ID.
+
+- %CPU: CPU usage.
+
+- %MEM: Memory usage.
+
+- RSS: Resident memory size.
+
+- STAT: Process state.
+
+- TIME: Accumulated CPU time.
+
+- COMMAND: Command or executable.
+
+3. The top command
+
+The top command displays a continuously updating view of processes and system activity.
+
+Press q to exit the monitoring display.
+
+4. The sleep command
+
+The command sleep 300 runs for up to 300 seconds unless interrupted or terminated earlier.
+
+5. Running a process in the background
+
+The command sleep 300 & starts a background process.
+
+The ampersand (&) allows the terminal to accept further commands.
+
+6. Finding a process
+
+The command ps aux | grep '[s]leep 300' searches the process list for the sleep 300 process.
+
+7. Understanding PID
+
+PID means Process ID. It identifies a running process.
+
+8. Stopping a process
+
+The command kill 1520 sent a termination signal to our test process.
+
+PID 1520 was the process ID assigned during this exercise.
+
+9. Verifying termination
+
+Running ps aux | grep '[s]leep 300' again returned no matching output.
+
+This confirmed that our test process was no longer running.
+
+Key learning:
+
+Process monitoring helps engineers investigate system activity and troubleshoot performance problems.
+
+Commands practised:
+
+ps
+
+ps aux
+
+top
+
+sleep 300 &
+
+grep
+
+kill
+
