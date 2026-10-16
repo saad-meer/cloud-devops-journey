@@ -1,0 +1,79 @@
+Day 6 - Linux System Monitoring
+
+Objective:
+Learn how to inspect running processes, system uptime, CPU activity, disk space and memory usage.
+
+Commands Practised:
+
+1. ps
+Displays processes associated with the current terminal session.
+
+2. ps aux
+Displays a broader list of running processes.
+
+3. top
+Provides a live view of running processes and system activity.
+Press q to exit.
+
+4. uptime
+Displays system uptime and load averages.
+
+5. df -h
+Displays filesystem capacity and available storage in human-readable units.
+
+6. vm_stat
+Displays macOS virtual memory statistics.
+
+7. memory_pressure
+Reports information about the current memory pressure and memory management.
+
+Key Concepts:
+
+Process:
+A running instance of a program.
+
+PID:
+A process identification number.
+
+CPU:
+The processor that executes program instructions.
+
+Load Average:
+An indicator of system load over the last 1, 5 and 15 minutes.
+
+Disk Space:
+Storage capacity available to the operating system and applications.
+
+RAM:
+Physical memory used by the computer to run programs and manage data.
+
+Swap:
+Disk storage that can be used to help manage memory demands.
+
+Memory Compression:
+A technique used by macOS to reduce the physical memory required for some data.
+
+Practical Observations:
+
+- My Mac reported 8 GiB of memory.
+- The memory_pressure command reported 69% system-wide free memory.
+- The memory statistics showed zero swap-ins and swap-outs at the time reported.
+- The uptime command displayed the time since the last system startup.
+- The df -h command displayed filesystem capacity and available storage.
+
+Important Lessons:
+
+- Monitor multiple indicators when investigating system performance.
+- High load average does not automatically mean the CPU is overloaded.
+- Free memory alone does not determine overall system health.
+- Disk space and memory availability are important when troubleshooting servers.
+
+Cloud and DevOps Relevance:
+
+System monitoring helps engineers investigate performance issues, identify resource constraints and maintain reliable applications.
+
+Environment Note:
+
+These exercises were performed on macOS. Some commands and outputs differ between macOS and Linux distributions.
+
+End of Day 6.
