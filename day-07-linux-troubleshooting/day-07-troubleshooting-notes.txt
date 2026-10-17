@@ -1,0 +1,112 @@
+Day 7 - Linux System Troubleshooting
+
+Objective:
+Practise investigating system health by examining CPU activity, running processes, memory usage and disk capacity.
+
+Environment:
+MacBook Air running macOS.
+These exercises use macOS commands and outputs. Some details differ from Linux distributions.
+
+1. System Uptime and Load
+
+Command:
+uptime
+
+Purpose:
+Displays the current time, system uptime, logged-in user sessions and load averages.
+
+Observations:
+
+* The system had been running for approximately 22 minutes when checked.
+* Load averages were 1.84, 2.49 and 5.27 for the 1-, 5- and 15-minute periods.
+* The recent load average was lower than the 15-minute average.
+
+Lesson:
+Load averages must be interpreted in context. They do not directly represent CPU utilisation percentages.
+
+2. CPU Activity and Processes
+
+Command:
+top -l 1 | head -n 15
+
+Purpose:
+Displays a snapshot of system activity and running processes.
+
+Observations:
+
+* 634 processes were reported.
+* 3 processes were running at the time of the snapshot.
+* CPU usage was 2.70% user, 13.51% system and 83.78% idle.
+
+Lesson:
+The snapshot showed low CPU utilisation. A single snapshot cannot rule out intermittent performance problems.
+
+3. Memory Pressure
+
+Command:
+memory_pressure
+
+Purpose:
+Reports information about macOS memory pressure and memory management.
+
+Observations:
+
+* Physical memory was reported as 8 GiB.
+* System-wide memory free percentage was 73%.
+* Swap-ins and swap-outs were both reported as zero.
+
+Lesson:
+Unused physical memory alone does not determine system health. Memory pressure, compression and swap activity should also be considered.
+
+4. Virtual Memory Statistics
+
+Command:
+vm_stat
+
+Purpose:
+Displays virtual memory statistics, including memory pages, compression and paging activity.
+
+Observations:
+
+* Memory compression was in use.
+* Swap-ins and swap-outs were reported as zero.
+* Page-in and page-out figures were cumulative statistics.
+
+Lesson:
+Cumulative counters should be interpreted carefully. Comparing readings over time can help identify changes in system behaviour.
+
+5. Disk Capacity
+
+Command:
+df -h
+
+Purpose:
+Displays filesystem capacity and usage in human-readable units.
+
+Observations:
+
+* The main data volume reported a capacity of 228 GiB.
+* Approximately 79 GiB was reported as used.
+* Approximately 111 GiB was reported as available.
+* Reported capacity usage was 42%.
+
+Lesson:
+The main data volume had substantial space available. macOS uses multiple related filesystems and APFS volumes, so their reported capacities should not simply be added together.
+
+6. Troubleshooting Conclusions
+
+* No clear evidence of CPU saturation was identified in the collected snapshot.
+* The memory-pressure output did not indicate an immediate memory-pressure problem.
+* The main data volume had substantial reported free space.
+* No changes to system settings or running processes were required.
+
+Important:
+These observations describe the system at the time of testing. A single set of measurements cannot rule out intermittent problems.
+
+Cloud and DevOps Relevance:
+
+Cloud and DevOps engineers monitor CPU, processes, memory and disk capacity to investigate performance issues and maintain reliable systems.
+
+A structured troubleshooting approach involves collecting evidence, interpreting measurements, documenting findings and investigating further when necessary.
+
+End of Day 7.
