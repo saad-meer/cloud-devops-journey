@@ -109,4 +109,131 @@ Cloud and DevOps engineers monitor CPU, processes, memory and disk capacity to i
 
 A structured troubleshooting approach involves collecting evidence, interpreting measurements, documenting findings and investigating further when necessary.
 
+7. Network Interface Inspection
+
+Commands:
+
+ifconfig
+
+ipconfig getifaddr en0
+
+Purpose:
+Inspect network interfaces and identify the local IPv4 address assigned to the active interface.
+
+Observations:
+
+* The en0 interface was active.
+* The local IPv4 address was 192.168.4.30.
+* The interface also had IPv6 addresses.
+* The lo0 interface used the IPv4 loopback address 127.0.0.1 and IPv6 loopback address ::1.
+
+Lesson:
+Network interfaces connect a computer to networks. IP addresses identify interfaces for network communication. Private IPv4 addresses are used within private networks.
+
+8. Local Network Stack Test
+
+Command:
+
+ping -c 4 127.0.0.1
+
+Observations:
+
+* Four packets were transmitted and four were received.
+* Packet loss was 0%.
+* Average round-trip time was approximately 0.183 ms.
+
+Lesson:
+The loopback test succeeded, confirming that the local networking stack responded to the test. This does not establish that external network connectivity is working.
+
+9. External Connectivity Test
+
+Command:
+
+ping -c 4 1.1.1.1
+
+Observations:
+
+* Four packets were transmitted and four were received.
+* Packet loss was 0%.
+* Average round-trip time was approximately 11.152 ms.
+
+Lesson:
+The Mac successfully exchanged ICMP echo messages with the external destination at the time of testing. Some destinations or networks may block ICMP, so a failed ping does not always mean that internet access is unavailable.
+
+10. DNS Resolution
+
+Command:
+
+nslookup example.com
+
+Observations:
+
+* The DNS resolver used an IPv6 address.
+* The query returned two IPv4 addresses for example.com.
+* The response was labelled non-authoritative.
+
+Lesson:
+DNS resolves domain names to IP addresses. A successful lookup confirms that the name was resolved, but does not guarantee that the website or its application is reachable.
+
+11. Listening TCP Sockets
+
+Command:
+
+netstat -an | grep LISTEN
+
+Purpose:
+Display TCP sockets in the listening state.
+
+Observations:
+
+* Listening sockets appeared on ports 631, 49152, 5000, 7000, 3306 and 33060.
+* Ports 5000 and 7000 appeared on IPv4 and IPv6 sockets.
+* Port 631 appeared on the IPv4 and IPv6 loopback addresses.
+
+Lesson:
+A listening socket indicates that a TCP endpoint is waiting for connections. The listening address matters: a loopback-only socket differs from one bound to a wildcard address.
+
+12. Identifying Listening Processes
+
+Command:
+
+lsof -nP -iTCP -sTCP:LISTEN
+
+Observations:
+
+* rapportd, PID 620, was listening on port 49152.
+* ControlCe, PID 646, was listening on ports 5000 and 7000.
+* Both processes had IPv4 and IPv6 listening sockets.
+
+Lesson:
+lsof can help identify the processes associated with listening TCP sockets. Process names and port numbers should be investigated rather than used to make unsupported assumptions about a service.
+
+13. Command-Line Troubleshooting
+
+During the exercise, two lsof commands failed because of incorrect command spelling or option syntax.
+
+The corrected command was:
+
+lsof -nP -iTCP -sTCP:LISTEN
+
+Lesson:
+Command-line tools require accurate syntax. Reading error messages, correcting commands and checking the resulting output are important troubleshooting skills.
+
+14. Networking Troubleshooting Conclusions
+
+* The local loopback test succeeded.
+* External ICMP connectivity to 1.1.1.1 succeeded.
+* DNS resolution for example.com succeeded.
+* Listening TCP sockets and associated processes were inspected.
+* No network configuration changes were made.
+
+Important:
+These results describe the system at the time of testing. Successful ping and DNS tests do not prove that every destination, port or application is accessible.
+
+Cloud and DevOps Relevance:
+
+Cloud and DevOps engineers investigate IP addresses, DNS resolution, network connectivity, listening ports and application processes when diagnosing service availability problems.
+
+A structured troubleshooting approach gathers evidence, tests individual components, interprets results and documents findings before making changes.
+
 End of Day 7.
