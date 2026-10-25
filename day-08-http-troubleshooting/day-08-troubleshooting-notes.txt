@@ -1,0 +1,110 @@
+Day 8 - HTTP Troubleshooting and Web Requests
+
+Objective:
+Learn how to test website responses using curl, understand common HTTP status codes, and investigate redirects.
+
+1. What is curl?
+
+curl is a command-line tool used to communicate with websites and web services.
+
+It helps us test a website without opening a browser.
+
+2. Checking HTTP Response Headers
+
+Command:
+curl -I https://example.com
+
+Meaning:
+
+* curl sends a request to the website.
+* -I requests the response headers rather than the page content.
+* HTTP/2 200 means the request received a successful HTTP response.
+
+3. Retrieving Website Content
+
+Command:
+curl https://example.com
+
+Meaning:
+This retrieves the website’s response content. For an HTML page, the Terminal may display HTML code instead of a formatted webpage.
+
+4. Important HTTP Status Codes
+
+200 - Success
+The request succeeded.
+
+301 - Moved Permanently
+The server redirects the request to another address permanently.
+
+404 - Not Found
+The requested resource could not be found.
+
+500 - Internal Server Error
+The server encountered an internal error while processing the request.
+
+5. Understanding HTTP and HTTPS
+
+HTTP is a protocol used for communication between clients and web servers.
+
+HTTPS uses TLS encryption to help protect data while it travels between the client and server.
+
+6. Understanding Redirects
+
+Example command:
+curl -I http://www.wikipedia.org
+
+Observed result:
+HTTP/1.1 301 Moved Permanently
+
+The response included:
+location: https://www.wikipedia.org/
+
+This showed that the server redirected the HTTP request to an HTTPS address.
+
+7. Following Redirects
+
+Command:
+curl -I -L http://www.wikipedia.org
+
+Meaning:
+
+* -I requests the response headers.
+* -L tells curl to follow redirects.
+
+Observed result:
+The first response was 301 Moved Permanently.
+The second response was HTTP/2 200.
+
+This demonstrated that the original address redirected the request and the destination returned a successful response.
+
+8. Testing a Specific Wikipedia Page
+
+Command:
+curl -I https://www.wikipedia.org/wiki/Main_Page
+
+Observed result:
+HTTP/2 301
+
+The response directed the request to:
+https://en.wikipedia.org/wiki/Main_Page
+
+Following the redirect produced two responses:
+301 followed by 200.
+
+9. Practical Troubleshooting Lessons
+
+* Test before making changes.
+* Read the actual response instead of guessing.
+* A 301 redirect is not necessarily an error.
+* A 200 response confirms success for that particular request, not for every part of a website.
+* A 404 response means the requested resource could not be found.
+* Use curl to gather evidence when investigating web applications.
+* Record the commands, results and conclusions.
+
+10. Summary
+
+Today I practised using curl to inspect website response headers, retrieve HTML content, recognise HTTP status codes, and follow redirects.
+
+These skills provide a foundation for troubleshooting web applications and cloud-hosted services as part of my Cloud and DevOps learning journey.
+
+No network configuration changes were made during these tests.
