@@ -108,3 +108,77 @@ Today I practised using curl to inspect website response headers, retrieve HTML 
 These skills provide a foundation for troubleshooting web applications and cloud-hosted services as part of my Cloud and DevOps learning journey.
 
 No network configuration changes were made during these tests.
+
+
+11. Understanding HTTP Responses
+
+I tested website responses using curl.
+
+Command:
+curl -I https://example.com
+
+Observed result:
+HTTP/2 200
+
+Meaning:
+The HTTP request succeeded. A 200 response does not guarantee that every part of the website is working correctly.
+
+12. Testing a Missing Webpage
+
+Command:
+curl -I https://example.com/this-page-does-not-exist
+
+Observed result:
+HTTP/2 404
+
+Meaning:
+The server returned a Not Found response for the requested resource. This does not necessarily mean the entire website is broken.
+
+13. Displaying Only the HTTP Status Code
+
+Command:
+curl -s -o /dev/null -w “HTTP Status: %{http_code}\n” https://example.com
+
+Observed result:
+HTTP Status: 200
+
+Meaning:
+This command displays the HTTP status code without printing the webpage content.
+
+14. Understanding DNS
+
+DNS stands for Domain Name System.
+
+Command:
+nslookup example.com
+
+Observed result:
+The lookup returned two IPv4 addresses:
+104.20.23.154
+172.66.147.243
+
+Meaning:
+DNS helps resolve domain names into IP addresses. A domain can have multiple IP addresses.
+
+The DNS resolver supplied the answer. A non-authoritative answer is normal when using a recursive DNS resolver.
+
+15. Combining DNS and HTTP Troubleshooting
+
+DNS helps a client find the network address associated with a domain name.
+
+HTTP defines how a client and web server exchange requests and responses.
+
+A successful DNS lookup does not guarantee that an HTTP request will succeed.
+
+If a request returns HTTP 404, investigate the requested URL, resource and application routing.
+
+If DNS resolution fails, investigate the hostname and DNS resolution process.
+
+16. Practical Troubleshooting Principles
+
+* Test before making changes.
+* Read the actual command output.
+* Investigate the likely cause before changing configuration.
+* Understand that a successful response does not guarantee that every application function works.
+* Record commands, observations and conclusions.
+* Verify that any corrective action resolves the problem.
